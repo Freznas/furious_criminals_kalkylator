@@ -48,7 +48,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_input1" />
+        app:layout_constraintTop_toBottomOf="@id/et_input1" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/menu"
@@ -59,11 +59,12 @@
         android:layout_marginTop="@dimen/dropdown_to_top"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
                 <AutoCompleteTextView
+                    android:id="@+id/dropdown"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:inputType="none"
-                    android:text="@string/dropdown_uträkningar" />
+                    android:text="@string/dropdown_uträkningar"
+                    />
     </com.google.android.material.textfield.TextInputLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,34 +3,53 @@ package com.example.furiouscriminalskalkylator;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
 {
     EditText editText1;
     EditText editText2;
     TextView resultField;
+    AutoCompleteTextView dropdown;
     double input1;
     double input2;
     double result;
+    Button calculate_Btn;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        String[] dropdownItems = new String[] {
+                "+", "-", "*", "/", "√", "%","Pythagoras sats","Cirklens Area", "Cylinderns volym"
+        };
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, dropdownItems);
+        dropdown = (AutoCompleteTextView)
+                findViewById(R.id.dropdown);
+        dropdown.setAdapter(adapter);
         //set values
-        editText1 = findViewById(R.id.editText1);
-        editText2 = findViewById(R.id.editText2);
+        editText1 = findViewById(R.id.et_input1);
+        editText2 = findViewById(R.id.et_input2);
 
         resultField = findViewById(R.id.textView);
-
-        // TODO Fixa Button onclick calculate();
+        calculate_Btn = findViewById(R.id.btn_uträkning);
+        calculate_Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                calculate("dummy ");
+            }
+        }) ;
     }
-
     /*
-    hantera 0 - 9 knappar
     hantera uträkning
     */
     public  void calculate( String operation )
