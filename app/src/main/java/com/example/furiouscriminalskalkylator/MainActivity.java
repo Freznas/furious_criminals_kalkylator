@@ -12,7 +12,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-
+//heeej
 public class MainActivity extends AppCompatActivity
 {
     EditText editText1;
