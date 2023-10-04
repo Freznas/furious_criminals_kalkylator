@@ -92,20 +92,21 @@ public class MainActivity extends AppCompatActivity
                 result = input1 / 100;
                 break;
             case "pythagoras":
-                result = Math.sqrt(Math.pow(input1, 2) - Math.pow(input2, 2)); // Is this correct?
+                result = Math.sqrt(Math.pow(input1, 2) + Math.pow(input2, 2)); // Is this correct? just changed the - to a +
                 // result = Math.sqrt( a * a + b * b )
                 break;
                 //TODO lägg till uträkningar här
             case "circleArea":
-                // calculate circlearea
+                result = Math.PI* Math.pow(input1,2);
                 break;
             case "cylinderVolym":
-                // calc volym
+                result = Math.PI* Math.pow(input1,2) * input2;
                 break;
             default:
-                //Error message
+                resultField.setText("Du har angett felaktiga värden, var snäll och försök igen. ");
                 break;
         }
         // TODO Visa resultat
+        resultField.setText("Resultatet blir " + result);
     }
 }
