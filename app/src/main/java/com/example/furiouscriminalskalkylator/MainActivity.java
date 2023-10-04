@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -23,29 +24,45 @@ public class MainActivity extends AppCompatActivity
     double input2;
     double result;
     Button calculate_Btn;
+    String opperator;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Set items in dropdown
         String[] dropdownItems = new String[] {
                 "+", "-", "*", "/", "√", "%","Pythagoras sats","Cirklens Area", "Cylinderns volym"
         };
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, dropdownItems);
+        //add items to dropdown
         dropdown = (AutoCompleteTextView)
                 findViewById(R.id.dropdown);
         dropdown.setAdapter(adapter);
+
         //set values
         editText1 = findViewById(R.id.et_input1);
         editText2 = findViewById(R.id.et_input2);
 
         resultField = findViewById(R.id.textView);
         calculate_Btn = findViewById(R.id.btn_uträkning);
+        dropdown.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+        @Override
+        public void onItemClick(AdapterView<?> parent, View arg1, int position, long arg3) {
+           opperator = parent.getItemAtPosition(position).toString();
+          //  resultField.setText(item);
+        }
+    });
+        //Buttons
         calculate_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calculate("dummy ");
+                // get value from dropdown, skicka in i calculate
+                calculate(opperator);
             }
         }) ;
     }
