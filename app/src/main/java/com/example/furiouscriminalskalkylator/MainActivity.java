@@ -40,11 +40,6 @@ public class MainActivity extends AppCompatActivity
         editText1 = findViewById(R.id.et_input1);
         editText2 = findViewById(R.id.et_input2);
 
-<<<<<<<<< Temporary merge branch 1
-
-//heeej
-
-=========
         resultField = findViewById(R.id.textView);
         calculate_Btn = findViewById(R.id.btn_uträkning);
         calculate_Btn.setOnClickListener(new View.OnClickListener() {
@@ -80,21 +75,21 @@ public class MainActivity extends AppCompatActivity
                 result = input1 / 100;
                 break;
             case "pythagoras":
-                result = Math.sqrt(Math.pow(input1, 2) - Math.pow(input2, 2)); // Is this correct?
+                result = Math.sqrt(Math.pow(input1, 2) + Math.pow(input2, 2)); // Is this correct? just changed the - to a +
                 // result = Math.sqrt( a * a + b * b )
                 break;
                 //TODO lägg till uträkningar här
             case "circleArea":
-                // calculate circlearea
+                result = Math.PI* Math.pow(input1,2);
                 break;
             case "cylinderVolym":
-                // calc volym
+                result = Math.PI* Math.pow(input1,2) * input2;
                 break;
             default:
-                //Error message
+                resultField.setText("Du har angett felaktiga värden, var snäll och försök igen. ");
                 break;
         }
         // TODO Visa resultat
+        resultField.setText("Resultatet blir " + result);
     }
 }
->>>>>>>>> Temporary merge branch 2
