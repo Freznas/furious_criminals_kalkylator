@@ -92,4 +92,4 @@ public class MainActivity extends AppCompatActivity
         // TODO Visa resultat
         resultField.setText("Resultatet blir " + result);
     }
-}
+}//hejkomochhjälpmig
