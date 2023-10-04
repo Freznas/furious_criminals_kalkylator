@@ -13,4 +13,11 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
+<<<<<<<<< Temporary merge branch 1
+    // Max är cool
 }
+=========
+}
+
+//hejhopp
+>>>>>>>>> Temporary merge branch 2

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="edit_width">97dp</dimen>
+    <dimen name="edit_height">53dp</dimen>
+    <dimen name="margin_start">20dp</dimen>
+    <dimen name="margin_top">144dp</dimen>
+    <dimen name="margin_bottom">135dp</dimen>
+    <dimen name="margin_start_2">300dp</dimen>
+    <dimen name="margin_right">20dp</dimen>
+    <dimen name="dropdown_width">130dp</dimen>
+    <dimen name="dropdown_height">75dp</dimen>
+    <dimen name="button_to_dropdown">24dp</dimen>
+    <dimen name="result_to_bottom">330dp</dimen>
+    <dimen name="dropdown_to_start">140dp</dimen>
+    <dimen name="dropdown_to_top">136dp</dimen>
+</resources>
