@@ -51,12 +51,12 @@ public class MainActivity extends AppCompatActivity
                 String dummy;
                 dummy = String.valueOf(dropdown.getText());
 
-                if (dummy.equals("Cirklens Area") || dummy.equals("%")){
+               if (dummy.equals("Cirklens Area") || dummy.equals("%")){
                         räknaUt(dummy);
                 }
-                else {
-                    calculate(dummy);
-                }
+               else {
+                   calculate(dummy);
+               }
             }
         }) ;
     }
@@ -85,19 +85,15 @@ public class MainActivity extends AppCompatActivity
             case "√":
                 result = Math.sqrt(input1);
                 break;
-            case "%":
-                result = input1 / 100;
-                break;
+
             case "Pythagoras sats":
                 result = Math.sqrt(Math.pow(input1, 2) + Math.pow(input2, 2)); // Is this correct? just changed the - to a +
                 // result = Math.sqrt( a * a + b * b )
                 break;
                 //TODO lägg till uträkningar här
-            case "circleArea":
-                result = Math.PI* Math.pow(input1,2);
-                break;
+
             case "Cylinderns volym":
-                result = Math.PI* Math.pow(input1,2) * input2;
+                result = avrunda(Math.PI* Math.pow(input1,2) * input2,2);
                 break;
             default:
                 resultField.setText("Du har angett felaktiga värden, var snäll och försök igen. ");
@@ -111,7 +107,7 @@ public class MainActivity extends AppCompatActivity
         input1 =Double.parseDouble(editText1.getText().toString());
         switch (operator){
             case "Cirklens Area":
-                result = Math.PI* Math.pow(input1,2);
+                result =avrunda( Math.PI* Math.pow(input1,2),2);
                 break;
             case "%":
                 result = input1 / 100;
@@ -121,6 +117,16 @@ public class MainActivity extends AppCompatActivity
                 break;
         }
         resultField.setText("Resultatet blir " + result);
+
+    }
+
+    public double avrunda(double värdet, int antal_decimaler) {
+
+        int faktor = (int) Math.pow(10, antal_decimaler);
+        double tillfälligt_värde1 = faktor * värdet;
+        double tillfälligt_värde2 = Math.round(tillfälligt_värde1);
+        double slutligt_värde = tillfälligt_värde2 / faktor;
+        return slutligt_värde;
 
     }
 }
