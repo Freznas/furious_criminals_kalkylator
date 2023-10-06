@@ -28,13 +28,16 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // Skapa Dropdown
+        //dropdownItems inehåller Strings som kommer finnas i Dropdown
         String[] dropdownItems = new String[] {
                 "+", "-", "*", "/", "√", "%","Pythagoras sats","Cirklens Area", "Cylinderns volym"
         };
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, dropdownItems);
-        dropdown = (AutoCompleteTextView)
-                findViewById(R.id.dropdown);
+        // koppla dropdown variabel till dropdown elementet i xml filen.
+        dropdown = (AutoCompleteTextView) findViewById(R.id.dropdown);
+        //Lägg till adapter & dropdownItems på dropdown
         dropdown.setAdapter(adapter);
         //set values
         editText1 = findViewById(R.id.et_input1);
@@ -47,27 +50,34 @@ public class MainActivity extends AppCompatActivity
         calculate_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                //Hämta värde från dropdown menyn
                 String dummy;
                 dummy = String.valueOf(dropdown.getText());
-
-                if (dummy.equals("Cirklens Area") || dummy.equals("%")){
+                // Kolla vilken uträknings funktion som ska kallas & Validera inputs för att hindra att programmet krashar
+                if (dummy.equals("Cirklens Area") || dummy.equals("%")
+                        && editText1.getText().toString() != null && !editText1.getText().toString() .isEmpty()){
+                    // om editText inte är null eller empty fortsätter programmet.
                     räknaUt(dummy);
                 }
-                else {
+                else if(editText1.getText().toString() != null && !editText1.getText().toString() .isEmpty()
+                        && editText2.getText().toString() != null && !editText2.getText().toString() .isEmpty()){
+                    //om editText1 && editText2 inte är null eller empty fortsätter programmet.
                     calculate(dummy);
+                }else
+                {
+                    // Om något av EditTexterna har felaktiga värden körs detta kodblock
+                    resultField.setText("Du har angett felaktiga värden, var snäll och försök igen. ");
                 }
             }
         }) ;
     }
-    /*
-    hantera uträkning
-    */
     public  void calculate( String operation )
     {
+        /* Funktion som hanterar uträkningar med två input fields
+         Inputs har blivt validerade så parse orsakar ingen krash. (validering görs i calculate onclick (java fil) och inputtype (xml fil))*/
         input1 =Double.parseDouble(editText1.getText().toString());
-        //  String värde2 = editText2.getText().toString();
         input2 = Double.parseDouble(editText2.getText().toString());
+        // här görs uträkningen
         switch (operation)
         {
             case "+":
@@ -85,13 +95,9 @@ public class MainActivity extends AppCompatActivity
             case "√":
                 result = Math.sqrt(input1);
                 break;
-
             case "Pythagoras sats":
-                result = Math.sqrt(Math.pow(input1, 2) + Math.pow(input2, 2)); // Is this correct? just changed the - to a +
-                // result = Math.sqrt( a * a + b * b )
+                result = Math.sqrt(Math.pow(input1, 2) + Math.pow(input2, 2));
                 break;
-            //TODO lägg till uträkningar här
-
             case "Cylinderns volym":
                 result = avrunda(Math.PI* Math.pow(input1,2) * input2,2);
                 break;
@@ -99,7 +105,7 @@ public class MainActivity extends AppCompatActivity
                 resultField.setText("Du har angett felaktiga värden, var snäll och försök igen. ");
                 break;
         }
-        // TODO Visa resultat
+        // Visa Resultatet
         resultField.setText("Resultatet blir " + result);
     }
 
@@ -127,6 +133,5 @@ public class MainActivity extends AppCompatActivity
         double tillfälligt_värde2 = Math.round(tillfälligt_värde1);
         double slutligt_värde = tillfälligt_värde2 / faktor;
         return slutligt_värde;
-
     }
 }
