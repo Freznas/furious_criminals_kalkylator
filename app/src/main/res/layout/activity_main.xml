@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 <!-- Skapar en linear layout för hantera inmatning-->
-
+    
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -38,8 +38,8 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/menu"
-            style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
-            android:layout_width="@dimen/dropdown_width"
+            app:endIconMode="dropdown_menu"
+                        android:layout_width="@dimen/dropdown_width"
             android:layout_height="@dimen/dropdown_height"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -86,7 +86,7 @@
         app:layout_constraintVertical_bias="0.746" />
 
 
-    <!-- Wave -->
+
 <!-- knapp för att ta inmatning och skicka til uträkning. -->
     <Button
         android:id="@+id/btn_uträkning"
@@ -102,7 +102,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.547" />
 
-
+    <!-- Wave -->
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="match_parent"

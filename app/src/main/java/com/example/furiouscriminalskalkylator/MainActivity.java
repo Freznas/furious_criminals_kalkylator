@@ -1,5 +1,6 @@
 package com.example.furiouscriminalskalkylator;
-
+/*Furious Criminals Kalkylator: Matilda Lindahl, Ali Alhasan, Max Hendess, Joakim Bjärkstedt.
+*/
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
